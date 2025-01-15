@@ -81,6 +81,26 @@ namespace mdoc.Test
             TestBinaryOp ("RightShift", ">>", secondType: "int");
 
         [Test]
+        public void CSharp_op_UnsignedRightShift () =>
+            TestBinaryOp("UnsignedRightShift", ">>>", secondType: "int");
+
+        [Test]
+        public void CSharp_op_CheckedAddition () =>
+           TestBinaryOp("CheckedAddition", "checked +");
+
+        [Test]
+        public void CSharp_op_CheckedSubtraction () =>
+           TestBinaryOp("CheckedSubtraction", "checked -");
+
+        [Test]
+        public void CSharp_op_CheckedMultiply () =>
+           TestBinaryOp("CheckedMultiply", "checked *");
+
+        [Test]
+        public void CSharp_op_CheckedDivision () =>
+           TestBinaryOp("CheckedDivision", "checked /");
+
+        [Test]
         public void CSharp_op_UnaryPlus () =>
 			TestUnaryOp ("UnaryPlus", "+");
 
@@ -111,6 +131,18 @@ namespace mdoc.Test
 		[Test]
 		public void CSharp_op_False () =>
             TestUnaryOp ("False", "false", returnType: "bool");
+
+        [Test]
+        public void CSharp_op_CheckedIncrement () =>
+           TestUnaryOp("CheckedIncrement", "checked ++");
+
+        [Test]
+        public void CSharp_op_CheckedDecrement () =>
+           TestUnaryOp("CheckedDecrement", "checked --");
+
+        [Test]
+        public void CSharp_op_CheckedUnaryNegation () =>
+           TestUnaryOp("CheckedUnaryNegation", "checked -");
 
         [Test]
         public void CSharp_op_Equality () =>
@@ -151,6 +183,14 @@ namespace mdoc.Test
         [Test]
         public void CSharp_op_Explicit_inverse () =>
             TestConversionOp ("Explicit", "explicit", "TestClass", "int");
+
+        [Test]
+        public void CSharp_op_Explicit_checked () =>
+            TestConversionOp("CheckedExplicit", "explicit", "int", "TestClass");
+
+        [Test]
+        public void CSharp_op_Explicit_checked_inverse () =>
+            TestConversionOp("CheckedExplicit", "explicit", "TestClass", "int");
 
         [Test]
         public void CSharp_modopt () =>
@@ -538,7 +578,7 @@ namespace mdoc.Test
 
         [TestCase("StaticVirtualMembers.StaticVirtualMemberInInterface`3", "StaticVirtualMethod", "public static virtual int StaticVirtualMethod (int left, int right);")]
         [TestCase("StaticVirtualMembers.StaticVirtualMemberInInterface`3", "op_Addition", "public static abstract TResult operator + (TSelf left, TOther right);")]
-        [TestCase("StaticVirtualMembers.StaticVirtualMemberInInterface`3", "op_CheckedAddition", "public static virtual TResult op_CheckedAddition (TSelf left, TOther right);")]
+        [TestCase("StaticVirtualMembers.StaticVirtualMemberInInterface`3", "op_CheckedAddition", "public static virtual TResult operator checked + (TSelf left, TOther right);")]
         [TestCase("StaticVirtualMembers.InterfaceI`1", "M", "public static abstract void M ();")]
         [TestCase("StaticVirtualMembers.InterfaceI`1", "M1", "public static virtual void M1 ();")]
         [TestCase("StaticVirtualMembers.InterfaceI`1", "op_Addition", "public static abstract T operator + (T l, T r);")]
@@ -546,7 +586,7 @@ namespace mdoc.Test
         [TestCase("StaticVirtualMembers.InterfaceI`1", "op_Inequality", "public static abstract bool operator != (T l, T r);")]
         [TestCase("StaticVirtualMembers.InterfaceI`1", "op_Implicit", "public static abstract implicit operator T (string s);")]
         [TestCase("StaticVirtualMembers.InterfaceI`1", "op_Explicit", "public static abstract explicit operator string (T t);")]
-        [TestCase("StaticVirtualMembers.InterfaceI`1", "op_CheckedAddition", "public static virtual T op_CheckedAddition (T l, T r);")]
+        [TestCase("StaticVirtualMembers.InterfaceI`1", "op_CheckedAddition", "public static virtual T operator checked + (T l, T r);")]
         public void CSharpStaticVirtualMethodTest(string typeFullName, string methodName, string expectedSignature)
         {
             var staticVirtualMemberDllPath = "../../../../external/Test/StaticVirtualMembers.dll";
@@ -612,7 +652,7 @@ namespace mdoc.Test
 
 
         void TestConversionOp (string name, string type, string leftType, string rightType) {
-            TestOp (name, $"public static {type} operator {leftType} ({rightType} c1);", argCount: 1, returnType: leftType);
+            TestOp (name, $"public static {type} operator {(name.StartsWith("Checked") ? "checked " : "")}{leftType} ({rightType} c1);", argCount: 1, returnType: leftType);
         }
 
         void TestComparisonOp (string name, string op)
