@@ -452,9 +452,8 @@ namespace Mono.Documentation.Updater
             foreach (var ii in type.Interfaces)
             {
                 var iface = ii.InterfaceType;
-                TypeReference lookup = iface.Resolve () ?? iface;
 
-                var iname = GetQualifiedTypeName(lookup);
+                var iname = GetQualifiedTypeName(iface);
 
                 if (!inheritedInterfaces.Contains (iname))
                     userInterfaces.Add (iface);
