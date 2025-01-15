@@ -3479,7 +3479,7 @@ namespace Mono.Documentation
         }
 
         static readonly string[] DocsNodeOrder = {
-        "typeparam", "param", "summary", "returns", "value", "remarks",
+        "summary", "typeparam", "param", "returns", "value", "remarks",
     };
 
         private static void OrderDocsNodes (XmlNode docs, XmlNodeList children)
