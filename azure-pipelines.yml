@@ -11,7 +11,7 @@ name: $(SourceBranchName)-$(Date:yyyyMMdd)$(Rev:.r)
 variables:
   solution: 'apidoctools.sln'
   buildConfiguration: 'Release'
-  mdocPath: 'bin/$(buildConfiguration)'
+  mdocPath: 'bin/$(buildConfiguration)-net6.0/win-x64'
 
 stages:
 - stage: SDLCheck
@@ -120,15 +120,15 @@ stages:
       condition: and(succeeded(), ne(variables['Build.Reason'], 'PullRequest'))
       inputs:
         ConnectedServiceName: 'CodeSigning-APEX'
-        FolderPath: '$(mdocPath)'
+        FolderPath: 'bin'
         UseMinimatch: true
         signConfigType: inlineSignParams
         SessionTimeout: '60'
         MaxConcurrency: '100'
         MaxRetryAttempts: '5'
         Pattern: |
-            *.dll
-            *.exe
+            **\*.dll
+            **\*.exe
         inlineOperation: |
           [
             {

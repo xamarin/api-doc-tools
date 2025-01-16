@@ -16,6 +16,8 @@
 
   <PropertyGroup Condition=" '$(TargetFramework)' != 'net471' ">
     <OutputPath>$(MSBuildThisFileDirectory)..\bin\$(Configuration)-$(TargetFramework)</OutputPath>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <SelfContained>false</SelfContained>
   </PropertyGroup>
 
   <ItemGroup>
