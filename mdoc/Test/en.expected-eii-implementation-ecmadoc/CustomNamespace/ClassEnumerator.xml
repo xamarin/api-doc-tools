@@ -26,12 +26,12 @@
   <Members>
     <Member MemberName=".ctor">
       <MemberSignature Language="C#" Value="public ClassEnumerator ();" />
-      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
-      <MemberSignature Language="VB.NET" Value="Public Sub New ()" />
-      <MemberSignature Language="JavaScript" Value="function ClassEnumerator()" Usage="var classEnumerator = new ClassEnumerator();" />
       <MemberSignature Language="C++ CLI" Value="public:&#xA; ClassEnumerator();" />
       <MemberSignature Language="C++ CX" Value="public:&#xA; ClassEnumerator();" />
       <MemberSignature Language="C++ WINRT" Value=" ClassEnumerator();" />
+      <MemberSignature Language="ILAsm" Value=".method public specialname rtspecialname instance void .ctor() cil managed" />
+      <MemberSignature Language="JavaScript" Value="function ClassEnumerator()" Usage="var classEnumerator = new ClassEnumerator();" />
+      <MemberSignature Language="VB.NET" Value="Public Sub New ()" />
       <MemberType>Constructor</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.65535.65535</AssemblyVersion>
@@ -44,11 +44,11 @@
     </Member>
     <Member MemberName="CustomNamespace.CustomInterface.Prop1" ExplicitInterfaceMemberName="CustomProp1">
       <MemberSignature Language="C#" Value="int CustomNamespace.CustomInterface.Prop1 { get; set; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance int32 CustomProp1" />
-      <MemberSignature Language="VB.NET" Value=" Property CustomProp1 As Integer Implements CustomInterface.Prop1" />
-      <MemberSignature Language="F#" Value="member this.CustomNamespace.CustomInterface.Prop1 : int with get, set" Usage="CustomNamespace.CustomInterface.Prop1" />
       <MemberSignature Language="C++ CLI" Value="property int CustomNamespace::CustomInterface::Prop1 { int get(); void set(int value); };" />
       <MemberSignature Language="C++ CX" Value="property int CustomNamespace::CustomInterface::Prop1 { int get(); void set(int value); };" />
+      <MemberSignature Language="F#" Value="member this.CustomNamespace.CustomInterface.Prop1 : int with get, set" Usage="CustomNamespace.CustomInterface.Prop1" />
+      <MemberSignature Language="ILAsm" Value=".property instance int32 CustomProp1" />
+      <MemberSignature Language="VB.NET" Value=" Property CustomProp1 As Integer Implements CustomInterface.Prop1" />
       <MemberSignature Language="C++ WINRT" Value="int CustomProp1();&#xA;&#xA;void CustomProp1(int value);" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -65,11 +65,11 @@
     </Member>
     <Member MemberName="CustomNamespace.CustomInterface.Prop2" ExplicitInterfaceMemberName="CustomProp2">
       <MemberSignature Language="C#" Value="object CustomNamespace.CustomInterface.Prop2 { get; }" />
-      <MemberSignature Language="ILAsm" Value=".property instance object CustomProp2" />
-      <MemberSignature Language="VB.NET" Value=" ReadOnly Property CustomProp2 As Object Implements CustomInterface.Prop2" />
-      <MemberSignature Language="F#" Value="member this.CustomNamespace.CustomInterface.Prop2 : obj" Usage="CustomNamespace.CustomInterface.Prop2" />
       <MemberSignature Language="C++ CLI" Value="property System::Object ^ CustomNamespace::CustomInterface::Prop2 { System::Object ^ get(); };" />
       <MemberSignature Language="C++ CX" Value="property Platform::Object ^ CustomNamespace::CustomInterface::Prop2 { Platform::Object ^ get(); };" />
+      <MemberSignature Language="F#" Value="member this.CustomNamespace.CustomInterface.Prop2 : obj" Usage="CustomNamespace.CustomInterface.Prop2" />
+      <MemberSignature Language="ILAsm" Value=".property instance object CustomProp2" />
+      <MemberSignature Language="VB.NET" Value=" ReadOnly Property CustomProp2 As Object Implements CustomInterface.Prop2" />
       <MemberSignature Language="C++ WINRT" Value="winrt::Windows::Foundation::IInspectable CustomProp2();" />
       <MemberType>Property</MemberType>
       <AssemblyInfo>
@@ -86,13 +86,13 @@
     </Member>
     <Member MemberName="Main">
       <MemberSignature Language="C#" Value="public static void Main (string[] cmdArgs);" />
-      <MemberSignature Language="ILAsm" Value=".method public static void Main(string[] cmdArgs) cil managed" />
-      <MemberSignature Language="VB.NET" Value="Public Shared Sub Main (cmdArgs As String())" />
-      <MemberSignature Language="F#" Value="static member Main : string[] -&gt; unit" Usage="CustomNamespace.ClassEnumerator.Main cmdArgs" />
-      <MemberSignature Language="JavaScript" Value="function main(cmdArgs)" Usage="CustomNamespace.ClassEnumerator.main(cmdArgs)" />
       <MemberSignature Language="C++ CLI" Value="public:&#xA; static void Main(cli::array &lt;System::String ^&gt; ^ cmdArgs);" />
       <MemberSignature Language="C++ CX" Value="public:&#xA; static void Main(Platform::Array &lt;Platform::String ^&gt; ^ cmdArgs);" />
       <MemberSignature Language="C++ WINRT" Value=" static void Main(winrt::array_view &lt;winrt::hstring const&amp;&gt; const&amp; cmdArgs);" />
+      <MemberSignature Language="F#" Value="static member Main : string[] -&gt; unit" Usage="CustomNamespace.ClassEnumerator.Main cmdArgs" />
+      <MemberSignature Language="ILAsm" Value=".method public static void Main(string[] cmdArgs) cil managed" />
+      <MemberSignature Language="JavaScript" Value="function main(cmdArgs)" Usage="CustomNamespace.ClassEnumerator.main(cmdArgs)" />
+      <MemberSignature Language="VB.NET" Value="Public Shared Sub Main (cmdArgs As String())" />
       <MemberType>Method</MemberType>
       <AssemblyInfo>
         <AssemblyVersion>0.0.65535.65535</AssemblyVersion>

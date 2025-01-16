@@ -2515,8 +2515,17 @@ namespace Mono.Documentation
                 return;
 
             // if first framework of type, clear signatures and generate from scratch
+            // try to keep order if there's only one existing element
+            XmlNode previousSiblingOfExistingElement = null;
+            XmlNode nextSiblingOfExistingElement = null;
             if (typeEntry.Framework.IsFirstFrameworkForType(typeEntry))
             {
+                if (existingElements.Count() == 1)
+                {
+                    var firstExistingElement = existingElements.First();
+                    previousSiblingOfExistingElement = firstExistingElement.PreviousSibling;
+                    nextSiblingOfExistingElement = firstExistingElement.NextSibling;
+                }
                 existingElements.ForEach(e => e.ParentNode.RemoveChild(e));
                 existingElements = QueryXmlElementsByXpath(xmlElement, elementXPath).ToList();
             }
@@ -2549,7 +2558,18 @@ namespace Mono.Documentation
             if (!elementFound) //not exists, add signature with fxa
             {
                 var newElement = xmlElement.OwnerDocument.CreateElement(elementName);
-                xmlElement.AppendChild(newElement);
+                if (previousSiblingOfExistingElement != null)
+                {
+                    xmlElement.InsertAfter(newElement, previousSiblingOfExistingElement);
+                }
+                else if (nextSiblingOfExistingElement != null)
+                {
+                    xmlElement.InsertBefore(newElement, nextSiblingOfExistingElement);
+                }
+                else
+                {
+                    xmlElement.AppendChild(newElement);
+                }
                 newElement.SetAttribute("Language", formatter.Language);
 
                 if (!string.IsNullOrWhiteSpace(valueToUse))
@@ -2617,8 +2637,16 @@ namespace Mono.Documentation
                 return;
 
             // pre: clear all the signatures
+            XmlNode previousSiblingOfExistingElement = null;
+            XmlNode nextSiblingOfExistingElement = null;
             if (typeEntry.IsMemberOnFirstFramework(member))
             {
+                if (existingElements.Count() == 1)
+                {
+                    var firstExistingElement = existingElements.First();
+                    previousSiblingOfExistingElement = firstExistingElement.PreviousSibling;
+                    nextSiblingOfExistingElement = firstExistingElement.NextSibling;
+                }
                 foreach (var element in existingElements)// xmlElement.SelectNodes(elementName).SafeCast<XmlElement>())
                 {
                     // remove element
@@ -2659,7 +2687,18 @@ namespace Mono.Documentation
             if (!elementFound) //not exists, just add it with fxa
             {
                 var newElement = xmlElement.OwnerDocument.CreateElement(elementName);
-                xmlElement.AppendChild(newElement);
+                if (previousSiblingOfExistingElement != null)
+                {
+                    xmlElement.InsertAfter(newElement, previousSiblingOfExistingElement);
+                }
+                else if (nextSiblingOfExistingElement != null)
+                {
+                    xmlElement.InsertBefore(newElement, nextSiblingOfExistingElement);
+                }
+                else
+                {
+                    xmlElement.AppendChild(newElement);
+                }
                 newElement.SetAttribute("Language", formatter.Language);
 
                 if (!string.IsNullOrWhiteSpace(valueToUse))
